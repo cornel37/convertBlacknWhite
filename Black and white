@@ -1,0 +1,16 @@
+import ImageWriter
+
+pic = ImageWriter.loadPicture("filename")    #load image
+ImageWriter.showPicture(pic)               #show Image
+
+def convertBlackWhite(pic):
+    rows = ImageWriter.getHeight(pic)
+    columns = ImageWriter.getWidth(pic)
+    for i in range(0,rows):
+        for j in range(0,columns):
+            c = ImageWriter.getColor(pic,j,i)
+            if sum(c)/3 >= 100:
+                ImageWriter.setColor(pic,j,i,[255,255,255])
+            else:
+                ImageWriter.setColor(pic,j,i,[0,0,0])
+    ImageWriter.updatePicture(pic)
